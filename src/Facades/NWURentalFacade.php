@@ -6,7 +6,7 @@
  * Time: 5:13 PM
  */
 
-namespace IanRothmann\Ain\Facades;
+namespace IanRothmann\NWURentalSDK\Facades;
 
 
 use Illuminate\Support\Facades\Facade;

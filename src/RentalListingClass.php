@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Classes\Api\RentalListing;
+namespace IanRothmann\NWURentalSDK;
 
 use GuzzleHttp\Client;
 

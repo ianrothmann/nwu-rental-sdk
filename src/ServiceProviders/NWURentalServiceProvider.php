@@ -1,9 +1,9 @@
 <?php
 
 
-namespace IanRothmann\Ain\ServiceProviders;
+namespace IanRothmann\NWURentalSDK\ServiceProviders;
 
-use App\Classes\Api\RentalListing\RentalListingClass;
+use IanRothmann\NWURentalSDK\RentalListingClass;
 use Illuminate\Support\ServiceProvider;
 
 class NWURentalServiceProvider extends ServiceProvider
