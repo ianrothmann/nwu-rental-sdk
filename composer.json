@@ -1,0 +1,31 @@
+{
+    "name": "ianrothmann/nwu-rental-sdk",
+    "description": "SDK for use with the NWU Rental API.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ian Rothmann",
+            "email": "ian@xtrapolate.io"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "illuminate/support": ">=8.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "IanRothmann\\NWURentalSDK\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "IanRothmann\\NWURentalSDK\\ServiceProviders\\NWURentalServiceProvider"
+            ],
+            "aliases": {
+                "Ain": "IanRothmann\\NWURentalSDK\\Facades\\NWURentalFacade"
+            }
+        }
+    }
+}
