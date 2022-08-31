@@ -1,13 +1,7 @@
 <?php
 
 return [
-    'url'=>env('AIN_URL','https://api.aininja.dev'),
-    'key'=>env('AIN_KEY'),
-    'cache'=>[
-      'type'=>env('AIN_CACHE_TYPE','remote'),
-      'local_ttl'=>180
-    ],
-    'mock'=>[
-        'type'=>env('AIN_MOCK_TYPE','none')
-    ]
+    'url'=>env('NWU_RENTAL_URL','https://eaglesnest.co.za/api'),
+    'key'=>env('NWU_RENTAL_KEY'),
+    'agencyid'=>env('NWU_RENTAL_AGENCY_ID'),
 ];
