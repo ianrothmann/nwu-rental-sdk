@@ -25,6 +25,19 @@ class RentalListingClass
         return $this->clientCall('cities');
     }
 
+    /**
+     * @param String $name
+     * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float]
+     */
+    public function createCity(String $name, array $location)
+    {
+        $parameters = [
+            'city_name' => $name,
+            'location' => $location
+        ];
+        return $this->clientCall('createcity', 'post', $parameters);
+    }
+
     public function suburbs()
     {
         return $this->clientCall('suburbs');
@@ -78,10 +91,10 @@ class RentalListingClass
 
     /**
      * @param array $parameters ['listing_name'=> string, 'num_units'=> int, 'complexid'=> int, 'listingtypeid'=> int]
-     * @param array $features ['refcode' => string, 'value'=> boolean/int/string]
+     * @param array $features ['refcode' => string, 'value'=> int/boolean/boolean, 'type' => number/shared/boolean]
      * @param array $files ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
      */
-    public function updateListing(int $listing, array $parameters, array $files = null, array $features = null)
+    public function updateListing(int $listing, array $parameters, array $features = null, array $files = null)
     {
         $api = 'agencies/' . $this->agencyID . '/listings/' . $listing;
 
@@ -94,7 +107,7 @@ class RentalListingClass
 
     /**
      * @param array $parameters ['listing_name'=> string, 'num_units'=> int, 'complexid'=> int, 'listingtypeid'=> int]
-     * @param array $features ['refcode' => string, 'value'=> int/string(shared)]
+     * @param array $features ['refcode' => string, 'value'=> boolean(1/0)/int/string(shared)]
      * @param array $files ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
      */
     public function createListing(array $parameters, array $files = null, array $features)
@@ -144,7 +157,7 @@ class RentalListingClass
             'query' => [
                 'deployed' => $deployed
             ],
-            'form_params' =>  $parameters
+            'form_params' => $parameters
         ]);
 
         return json_decode($res->getBody()->getContents());
