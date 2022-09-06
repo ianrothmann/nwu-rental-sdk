@@ -83,8 +83,6 @@ class RentalListingClass
     {
         $parameters['location'] = $location;
 
-        return $parameters;
-
         return $this->clientCall('complex', 'post', $parameters);
     }
 
