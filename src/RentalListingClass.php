@@ -4,6 +4,7 @@
 namespace IanRothmann\NWURentalSDK;
 
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\File;
 
 class RentalListingClass
 {
@@ -35,6 +36,7 @@ class RentalListingClass
             'city_name' => $name,
             'location' => $location
         ];
+
         return $this->clientCall('createcity', 'post', $parameters);
     }
 
@@ -43,9 +45,28 @@ class RentalListingClass
         return $this->clientCall('suburbs');
     }
 
+    /**
+     * @param array $parameters ['suburb_name' => string, 'cityid'=> int]
+     */
+    public function createSuburb(array $parameters)
+    {
+        return $this->clientCall('createsuburb', 'post', $parameters);
+    }
+
     public function residences()
     {
         return $this->clientCall('residences');
+    }
+
+    /**
+     * @param array $parameters ['residence_name' => string,'gender_only'=> f/m/all, 'cityid'=> int]
+     * @param array $file ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
+     */
+    public function createResidence(array $parameters, array $file)
+    {
+        $parameters['file'] = $file;
+
+        return $this->clientCall('createresidence', 'post', $parameters);
     }
 
     public function complexes()
@@ -140,7 +161,7 @@ class RentalListingClass
         return $this->clientCall($api, 'post', $parameters);
     }
 
-    protected function clientCall($api, $type = 'get', $parameters = null, $files = null)
+    protected function clientCall($api, $type = 'get', $parameters = null)
     {
         $url = $this->url . '/api/' . $api;
         $deployed = null;
