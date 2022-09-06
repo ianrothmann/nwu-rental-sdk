@@ -60,7 +60,7 @@ class RentalListingClass
 
     /**
      * @param array $parameters ['residence_name' => string,'gender_only'=> f/m/all, 'cityid'=> int]
-     * @param array $file ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
+     * @param array $file ['url'=> string, 'file_name'=> string, 'extension'=> string]
      */
     public function createResidence(array $parameters, array $file)
     {
