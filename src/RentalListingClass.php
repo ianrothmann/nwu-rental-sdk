@@ -76,7 +76,7 @@ class RentalListingClass
 
     /**
      * @param array $parameters ['complex_name'=> string, 'residenceid'=> int]
-     * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float]
+     * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float, 'cityid'=> int]
      */
     public function createComplex(array $parameters, array $location)
     {
