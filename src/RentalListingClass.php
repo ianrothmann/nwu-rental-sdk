@@ -30,7 +30,7 @@ class RentalListingClass
      * @param String $name
      * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float]
      */
-    public function createCity(String $name, array $location)
+    public function createCity(string $name, array $location)
     {
         $parameters = [
             'city_name' => $name,
@@ -72,6 +72,17 @@ class RentalListingClass
     public function complexes()
     {
         return $this->clientCall('complexes');
+    }
+
+    /**
+     * @param array $parameters ['complex_name'=> string, 'residenceid'=> int]
+     * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float]
+     */
+    public function createComplex(array $parameters, array $location)
+    {
+        $parameters['location'] = $location;
+
+        return $this->clientCall('complex', 'post', $parameters);
     }
 
     public function features()
