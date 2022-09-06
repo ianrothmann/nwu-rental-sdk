@@ -4,6 +4,7 @@
 namespace IanRothmann\NWURentalSDK;
 
 use GuzzleHttp\Client;
+use http\Env\Response;
 use Illuminate\Support\Facades\File;
 
 class RentalListingClass
@@ -81,6 +82,8 @@ class RentalListingClass
     public function createComplex(array $parameters, array $location)
     {
         $parameters['location'] = $location;
+
+        return $parameters;
 
         return $this->clientCall('complex', 'post', $parameters);
     }
