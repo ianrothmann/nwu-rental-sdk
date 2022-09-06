@@ -37,7 +37,7 @@ class RentalListingClass
             'location' => $location
         ];
 
-        return $this->clientCall('createcity', 'post', $parameters);
+        return $this->clientCall('city', 'post', $parameters);
     }
 
     public function suburbs()
@@ -50,7 +50,7 @@ class RentalListingClass
      */
     public function createSuburb(array $parameters)
     {
-        return $this->clientCall('createsuburb', 'post', $parameters);
+        return $this->clientCall('suburb', 'post', $parameters);
     }
 
     public function residences()
@@ -66,7 +66,7 @@ class RentalListingClass
     {
         $parameters['file'] = $file;
 
-        return $this->clientCall('createresidence', 'post', $parameters);
+        return $this->clientCall('residence', 'post', $parameters);
     }
 
     public function complexes()
