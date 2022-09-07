@@ -96,6 +96,10 @@ class RentalListingClass
         return $this->clientCall('featurecategories');
     }
 
+    public function listingTypes(){
+        return $this->clientCall('listingtypes');
+    }
+
     public function listings($deployed = null)
     {
         return $this->clientCall('agencies/' . $this->agencyID . '/listings', 'get', ['deployed' => $deployed]);
