@@ -186,6 +186,15 @@ class RentalListingClass
         return $this->clientCall($api, 'post');
     }
 
+    /**
+     *
+     */
+    public function interestDeleted($listingID, $advertID, $interestID){
+        $api = 'agencies/' . $this->agencyID . '/listings/' . $listingID . '/adverts/' . $advertID . '/interests/' . $interestID . '/deleted';
+
+        return $this->clientCall($api, 'post');
+    }
+
     protected function clientCall($api, $type = 'get', $parameters = null)
     {
         $url = $this->url . '/api/' . $api;
