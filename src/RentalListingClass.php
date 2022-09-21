@@ -131,7 +131,7 @@ class RentalListingClass
      * @param array $features ['refcode' => string, 'value'=> int/boolean/boolean, 'type' => number/shared/boolean]
      * @param array $files ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
      */
-    public function updateListing(int $listing, array $parameters, array $features = null, array $files = null)
+    public function updateListing(int $listing, array $parameters, array $files = null, array $features = null)
     {
         $api = 'agencies/' . $this->agencyID . '/listings/' . $listing;
 
@@ -139,22 +139,22 @@ class RentalListingClass
         $parameters['files'] = $files;
         $parameters['features'] = $features;
 
-        return $this->clientCall($api, 'patch', $parameters, $files);
+        return $this->clientCall($api, 'patch', $parameters);
     }
 
     /**
      * @param array $parameters ['listing_name'=> string, 'num_units'=> int, 'complexid'=> int, 'listingtypeid'=> int]
-     * @param array $features ['refcode' => string, 'value'=> boolean(1/0)/int/string(shared)]
+     * @param array $features ['refcode' => string, 'value'=> int/boolean/boolean, 'type' => number/shared/boolean]
      * @param array $files ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
      */
-    public function createListing(array $parameters, array $files = null, array $features)
+    public function createListing(array $parameters, array $files = null, array $features = null)
     {
         $api = 'agencies/' . $this->agencyID . '/listings';
 
         $parameters['files'] = $files;
         $parameters['features'] = $features;
 
-        return $this->clientCall($api, 'post', $parameters, $files);
+        return $this->clientCall($api, 'post', $parameters);
     }
 
     /**
@@ -175,6 +175,15 @@ class RentalListingClass
         $api = 'agencies/' . $this->agencyID . '/listings/' . $listingID . '/adverts';
 
         return $this->clientCall($api, 'post', $parameters);
+    }
+
+    /**
+     *
+    */
+    public function interestFollowUp($listingID, $advertID, $interestID){
+        $api = 'agencies/' . $this->agencyID . '/listings/' . $listingID . '/adverts/' . $advertID . '/interests/' . $interestID . '/followup';
+
+        return $this->clientCall($api, 'post');
     }
 
     protected function clientCall($api, $type = 'get', $parameters = null)
