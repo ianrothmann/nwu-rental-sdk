@@ -202,7 +202,6 @@ class RentalListingClass
      */
     public function createPOI(array $parameters, array $location, array $files){
         $api = 'poi';
-
         $parameters['files'] = $files;
         $parameters['location'] = $location;
 
