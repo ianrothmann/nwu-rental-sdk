@@ -146,13 +146,15 @@ class RentalListingClass
      * @param array $parameters ['listing_name'=> string, 'num_units'=> int, 'complexid'=> int, 'listingtypeid'=> int]
      * @param array $features ['refcode' => string, 'value'=> int/boolean/boolean, 'type' => number/shared/boolean]
      * @param array $files ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
+     * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float, 'cityid'=> int]
      */
-    public function createListing(array $parameters, array $files = null, array $features = null)
+    public function createListing(array $parameters, array $files = null, array $features = null, array $location = null)
     {
         $api = 'agencies/' . $this->agencyID . '/listings';
 
         $parameters['files'] = $files;
         $parameters['features'] = $features;
+        $parameters['location'] = $location;
 
         return $this->clientCall($api, 'post', $parameters);
     }
