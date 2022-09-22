@@ -198,11 +198,11 @@ class RentalListingClass
     /**
      * @param array $parameters ['amenity_name'=> string, 'type'=> general/uni]
      * @param array $location ['number'=> int, 'street_name'=> string, 'gps_lat'=> float, 'gps_lng'=> float, 'cityid'=> int]
-     * @param array $files ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
+     * @param array $file ['filename'=> string, 'mimetype'=> string, 'extension'=> string, 'size'=> int, 'disk'=> string, 'base_url'=> string, 'key'=> string, 'thumbnail_key'=> string]
      */
-    public function createPOI(array $parameters, array $location, array $files){
+    public function createPOI(array $parameters, array $location, array $file){
         $api = 'poi';
-        $parameters['files'] = $files;
+        $parameters['file'] = $file;
         $parameters['location'] = $location;
 
         return $this->clientCall($api, 'post', $parameters);
